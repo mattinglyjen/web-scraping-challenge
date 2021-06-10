@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Latest Mars News</h2>
+                <h3>{{mars.news_title}}</h3>
+                <p>{{ mars.news_p}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <h2>Featured Mars Image</h2>
+                <img src="{{ mars.featured_image_url}}">
+            </div>
+            <div class="col-lg-4">
+                <h2>Mars Facts</h2>
+                {{mars.facts| safe}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center">
+                <h2>Mars Hemisphere</h2>
+                <br />
+            </div>
+        </div>
+
+        <div class="row">
+            {% for hemispheres in mars.hemispheres %}
+            <div class="col-sm-3">
+                <div class="card text-center" style="width: 10px;">
+                    <img class="card-img-top text-center" id="scale_id" src="{{hemispheres.img_url}}" style="width:200px;height:200px;border-style: solid>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{hemispheres.title}}</h5>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
